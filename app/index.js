@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 
@@ -6,8 +6,9 @@ let mainWindow;
 
 let createWindow = () => {
     mainWindow = new BrowserWindow({
-        width: 900,
-        height: 700,
+        width: 1028,
+        height: 756,
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
