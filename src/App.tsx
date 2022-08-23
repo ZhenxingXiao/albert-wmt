@@ -1,11 +1,14 @@
-import logo from './logo.svg';
+import { FC } from 'react';
+import { Row, Col } from 'antd';
 import './App.less';
 
-function App() {
-  return (
-    <div className="app-container">
-      
-    </div>
+const App: FC = () => {
+  return(
+    <Row justify='center' align='middle' className='app-container'>
+      <Col span={4}>
+        <p>SSH Login</p>
+      </Col>
+    </Row>
   );
 }
 
