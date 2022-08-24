@@ -8,14 +8,11 @@ import './App.less';
 const App: FC = () => {
   return(
     <Row justify='center' align='middle' className='app-container'>
-      <Col span={8}>
+      <Col span={ 12 }>
         <LoginCard />
       </Col>
       <div className='app-info'>
         <p>{info['name']}: <span>{info['version']}</span></p>
-        <p>chrome: <span>{process.versions['chrome']}</span></p>
-        <p>node: <span>{process.versions['node']}</span></p>
-        <p>electron: <span>{process.versions['electron']}</span></p>
       </div>
     </Row>
   );

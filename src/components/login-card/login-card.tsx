@@ -1,10 +1,11 @@
-import { FC } from 'react';
-import { Card, Form, Input, Button } from 'antd';
+import { FC, useState } from 'react';
+import { Card, Form, Input, Button, } from 'antd';
 import { ApiOutlined, DatabaseOutlined, UserOutlined, LockOutlined, CloudUploadOutlined, UndoOutlined } from '@ant-design/icons';
+import appRuntime from '../../app-runtime';
 
 const layout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 18 },
+    labelCol: { span: 6 },
+    wrapperCol: { span: 16 },
 };
 
 const formTailLayout = {
@@ -12,9 +13,22 @@ const formTailLayout = {
 };
 
 const LoginCard: FC = () => {
+
+    const [ loadingStatus, setLoadingStatus ] = useState(false);
+
+    const onFinish = (value: any) => {
+        if(appRuntime){
+            appRuntime.send('to-main', '哈哈哈哈');
+        }
+        setLoadingStatus(true);
+    };
+
     return(
-        <Card title="Connection To The Remote Server" bordered={false}>
-            <Form {...layout}>
+        <Card 
+            title='Connection To The Remote Server'
+            bordered={false}>
+            <Form {...layout} disabled={ loadingStatus }
+                onFinish={ onFinish }>
                 <Form.Item 
                     name='host' 
                     label='Host' 
@@ -67,7 +81,7 @@ const LoginCard: FC = () => {
                 </Form.Item>
                 <Form.Item 
                     name='password' 
-                    label='Password' 
+                    label='Pass' 
                     tooltip="Don't give the password to anyone"
                     rules={[
                         {
@@ -78,7 +92,7 @@ const LoginCard: FC = () => {
                     <Input type='password' prefix={ <LockOutlined/> } placeholder='your password' allowClear/>
                 </Form.Item>
                 <Form.Item { ...formTailLayout }>
-                    <Button type="primary" icon={ <CloudUploadOutlined/> } htmlType='submit'>
+                    <Button type="primary" icon={ <CloudUploadOutlined/> } htmlType='submit' loading={ loadingStatus }>
                         Connect
                     </Button>
                     <Button type="default" icon={ <UndoOutlined/> } htmlType='reset' className='to-left-8'>
