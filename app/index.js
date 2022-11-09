@@ -3,7 +3,7 @@ const isDev = require('electron-is-dev');
 const Store = require('electron-store');
 const log = require('electron-log');
 const path = require('path');
-
+const { parseAll } = require('./refer-parser');
 const constants = require('./constants');
 
 /**
@@ -12,9 +12,9 @@ const constants = require('./constants');
  */
 
 // store
-const store = new Store({
-    encryptionKey: constants.APP_KEY
-});
+// const store = new Store({
+//     encryptionKey: constants.APP_KEY
+// });
 
 // main window
 let mainWindow;
@@ -29,14 +29,24 @@ let createWindow = () => {
             webPreferences: {
                 nodeIntegration: true,
                 contextIsolation: true,
-                preload: path.join(__dirname, 'preload.js')
+                preload: path.join(__dirname, 'preload.js'),
+                devTools: true
             }
         });
         mainWindow.loadURL(isDev ? constants.DEV_URL : constants.PUB_URL);
-        isDev && mainWindow.webContents.openDevTools();
+
+        if(mainWindow.webContents.isDevToolsOpened){
+            mainWindow.webContents.closeDevTools();
+        }
+        mainWindow.webContents.openDevTools();
+
         mainWindow.on('closed', () => mainWindow = null);
 
-        ipcMain.on('to-main', (_, msg) => {console.log(msg)})
+        ipcMain.on('refer-analysis', (_, msg) => {
+            parseAll(JSON.parse(msg), (reply) => {
+                mainWindow.webContents.send('refer-analysis', reply);
+            })
+        })
     }catch(e){
         log.error(constants.ERR_INFO.CREATE_MAIN_WIN, e);
     }

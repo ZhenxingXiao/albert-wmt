@@ -18,7 +18,8 @@ const LoginCard: FC = () => {
 
     const onFinish = (value: any) => {
         if(appRuntime){
-            appRuntime.send('to-main', '哈哈哈哈');
+            appRuntime.subscribe('ui', () => console.log('渲染进程'));
+            appRuntime.send('ui', '哈哈哈哈');
         }
         setLoadingStatus(true);
     };

@@ -1,10 +1,13 @@
 {
-  "name": "website-management-tool",
-  "version": "0.1.0",
+  "name": "albert-wmt",
+  "version": "1.0.1-dev",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@babel/core": "^7.16.0",
+    "@babel/generator": "^7.20.4",
+    "@babel/traverse": "^7.20.1",
+    "@babel/types": "^7.20.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -92,6 +95,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/parser": "^7.20.3",
     "antd": "^4.22.7",
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",

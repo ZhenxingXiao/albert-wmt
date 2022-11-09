@@ -1,7 +1,12 @@
 @import '~antd/dist/antd.less';
+
+@primary: #1e90ff;
+@border: #babcbf;
+@light-gray: #eaeeef;
+
 .app-container{
     height: 100vh;
-    background-color: #EAEEEF;
+    background-color: @light-gray;
 }
 .app-info{
     display: flex;
@@ -13,10 +18,53 @@
     bottom: 8px;
     p{
         user-select: none;
-        color: #BABCBF;
+        color: @border;
         margin: 0;
     }
 }
 .to-left-8{
     margin-left: 8px;
+}
+.dashboard-container{
+    height: 100%;
+}
+.h100{
+    height: 100%;
+}
+.w100{
+    width: 100%;
+}
+.bg-parent{
+    background: transparent;
+}
+.bg-primary{
+    background-color: @primary;
+}
+.margin0{
+    margin: 0;
+}
+.mt40{
+    margin-top: 40px;
+}
+.padding0{
+    padding: 0;
+}
+.pt40{
+    padding-top: 40px;
+}
+.common-border-left{
+    border-left: 1px solid @border;
+}
+.common-border-right{
+    border-right: 1px solid @border;
+}
+.common-border-top{
+    border-top: 1px solid @border;
+}
+.common-border-bottom{
+    border-bottom: 1px solid @border;
+}
+
+.custom-collapse .ant-collapse-header{
+    background-color: @light-gray;
 }
