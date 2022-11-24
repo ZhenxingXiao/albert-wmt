@@ -13,7 +13,7 @@ const {
 } = Layout;
 
 const Dashboard: FC = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
 
     return(
         <div className="dashboard-container">
@@ -31,14 +31,14 @@ const Dashboard: FC = () => {
                         </Menu.Item>
                     </Menu>
                 </Sider>
-                <Layout>
+                <Layout className="h100">
                     {/* <Header className="padding0 common-border-bottom">
                         {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                             className: 'trigger',
                             onClick : () => setCollapsed(!collapsed)
                         })}
                     </Header> */}
-                    <Content className="dashboard-content">
+                    <Content className="dashboard-content h100">
                         <Routes>
                             <Route path="/refer" element={ <ReferPage/> } />
                             <Route path="/ngupgrade" element={ <NgUpgradePage/> } />

@@ -8,7 +8,63 @@ const APP_KEY = '314159265358979323846264338327950288419716939937510582097494459
 const ERR_INFO = {
     GET_ALL_WIN: 'Failed to get all the window.',
     CREATE_MAIN_WIN: 'Failed to create main window.',
-    QUITE_QPP: 'Failed to quit application.'
+    QUITE_QPP: 'Failed to quit application.',
+    INIT_NG_REFER_PARSER: 'Failed to init ng refer parser.',
+    FAILED_OPEN_REALM: 'Failed to open realm',
 };
+const APP_DATA_DIR_KEY = 'appData';
+const DATA_CACHE_DIR = 'app_data_cache';
 
-module.exports = { DEV_URL, PUB_URL, APP_KEY, ERR_INFO};
+const NodeType = {
+    Controller: 'controller',
+    Service: 'service',
+    Unknown: 'unknown',
+    Factory: 'factory',
+    Directive: 'directive'
+}
+
+const SubNodeType = {
+    InternalVariable: 'internal_variable',
+    InternalFunction: 'internal_function',
+    MemberVariable: 'member_variable',
+    MemberFunction: 'member_function'
+}
+
+const NodeProperty = {
+    'controller': {
+        pos: 0,
+        color: '#ffc6ff'
+    },
+    'service': {
+        pos: 2000,
+        color: '#bdb2ff'
+    },
+    'factory': {
+        pos: 4000,
+        color: '#a0c4ff'
+    },
+    'directive': {
+        pos: 6000,
+        color: '#9bf6ff'
+    },
+    'unknown': {
+        pos: 8000,
+        color: '#caffbf'
+    }
+}
+
+const APP_ID = 'albertwmt20221122151007'
+
+module.exports = { 
+    DEV_URL, 
+    PUB_URL, 
+    APP_KEY,
+    APP_ID, 
+    ERR_INFO,
+    APP_DATA_DIR_KEY,
+    DATA_CACHE_DIR,
+
+    NodeType,
+    NodeProperty,
+    SubNodeType
+};
